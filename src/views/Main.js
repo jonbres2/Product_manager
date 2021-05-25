@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import ProductForm from '../components/ProductForm';
 import ProductList from '../components/ProductList';
 
-export default() => {
+const Main = props => {
     const [products, setProducts] = useState([]);
     const [loaded, setLoaded] = useState(false);
 
@@ -14,13 +14,17 @@ export default() => {
                 setProducts(res.data.products);
                 setLoaded(true);
             });
-    }, [])
+    }, [loaded])
 
-    return(
+    return (
         <div>
-            <ProductForm/>
-            <br/>
-            {loaded && <ProductList products={products}/>}
+            <h1>Add a new Product!</h1>
+            <ProductForm />
+            <br /><br />
+            <h1>View All Products!</h1>
+            {loaded && <ProductList products={products} />}
         </div>
     )
 }
+
+export default Main;

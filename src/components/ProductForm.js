@@ -17,7 +17,6 @@ const ProductForm = props => {
 
     const onSubmitHandler = e => {
         e.preventDefault();
-        console.log(form);
         axios.post('http://localhost:8000/api/products/new', form)
             .then(res => console.log(res))
             .catch(err => console.log(err))
